@@ -39,7 +39,7 @@ As a fresh graduate, this project helped me develop:
 ---
 
 ## Project Structure
-DataWarehouse/
+DataWarehouse:
 1) Bronze/ # Raw source tables (e.g., crm_sales_detail)
 2) Silver/ # Cleaned tables with technical columns
 3) Gold/ # Star schema views for reporting
