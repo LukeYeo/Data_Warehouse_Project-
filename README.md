@@ -40,10 +40,11 @@ As a fresh graduate, this project helped me develop:
 
 ## Project Structure
 DataWarehouse/
-├── Bronze/ # Raw source tables (e.g., crm_sales_detail)
-├── Silver/ # Cleaned tables with technical columns
-├── Gold/ # Star schema views for reporting
-├── Scripts/ # ETL SQL scripts
+1) Bronze/ # Raw source tables (e.g., crm_sales_detail)
+2) Silver/ # Cleaned tables with technical columns
+3) Gold/ # Star schema views for reporting
+4) Sripts/ # ETL SQL scripts
+5) Documentation
 ---
 
 ## How to Reproduce
