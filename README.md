@@ -1,78 +1,73 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage{hyperref}
-\usepackage{xcolor}
-\definecolor{blue}{RGB}{0,82,155}
+# Data Warehouse Implementation with Medallion Architecture
 
-\begin{document}
+## Overview
+This project implements a **modern data warehouse** using SQL Server following the **Medallion Architecture** (Bronze-Silver-Gold layers). It demonstrates end-to-end ETL pipelines, data modeling with star schema, and SQL-based analytics for sales data from ERP & CRM systems.
 
-\title{\color{blue}\textbf{Data Warehouse Implementation with Medallion Architecture}}
-\author{Luke Yeo}
+## Note:
+-	Dataset: https://datawithbaraa.substack.com/p/build-a-data-warehouse-from-scratch
+-	Notion Project Plan: https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269 (I am not the owner of this)
+-	Note: This is to learn and have an experience for building a data warehouse  
 
-\section*{Overview}
-This project implements a \textbf{modern data warehouse} using SQL Server following the \textbf{Medallion Architecture} (Bronze-Silver-Gold layers). It demonstrates end-to-end ETL pipelines, data modeling with star schema, and SQL-based analytics for sales data from ERP \& CRM systems.
 
-\subsection*{Key Features}
-\begin{itemize}
-    \item \textbf{3-Layer Architecture}: Raw ingestion (Bronze) → Cleaned/standardized (Silver) → Business-ready star schema (Gold)
-    \item \textbf{ETL Best Practices}: Bulk loading, error handling, stored procedures, and performance timing
-    \item \textbf{Data Quality Checks}: Null/duplicate detection, value standardization, business rule validation
-    \item \textbf{Dimensional Modeling}: Implemented fact \& dimension tables for analytics
-\end{itemize}
+### Key Features
+- **3-Layer Architecture**:  
+  - **Bronze**: Raw ingestion (source-system tables like `crm_cust_info`)  
+  - **Silver**: Cleaned/standardized data with metadata columns  
+  - **Gold**: Business-ready star schema (views like `dim_customer`, `fact_sales`)  
+- **ETL Best Practices**: Bulk loading, error handling, stored procedures, and performance timing  
+- **Data Quality Checks**: Null/duplicate detection, value standardization, business rule validation  
+- **Dimensional Modeling**: Implemented fact & dimension tables for analytics  
 
-\section*{Credits \& Attribution}
-\begin{itemize}
-    \item \textbf{Original Project Concept}: \href{https://datawithbaraa.substack.com/p/build-a-data-warehouse-from-scratch}{Data With Baraa} by Baraa Khatib Salkini
-    \item \textbf{Notion Plan Reference}: \href{https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269}{SQL Data Warehouse Project} (Not owned by me)
-    \item \textbf{Implementation Guidance}: Followed walkthrough by Luke Yeo (MIT License)
-\end{itemize}
+---
 
-\section*{Technical Highlights}
-\subsection*{Data Architecture}
-\begin{itemize}
-    \item \textbf{Bronze Layer}: Raw CSV ingestion with source-system naming conventions
-    \item \textbf{Silver Layer}: Data cleansing, standardization, and integrity checks
-    \item \textbf{Gold Layer}: Star schema with \texttt{dim\_customer}, \texttt{dim\_product}, and \texttt{fact\_sales} views
-\end{itemize}
+## Credits & Attribution
+- **Original Project Concept**: [Data With Baraa](https://datawithbaraa.substack.com/p/build-a-data-warehouse-from-scratch) by Baraa Khatib Salkini  
+- **Notion Plan Reference**: [SQL Data Warehouse Project](https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269) (Not owned by me)  
+- **Implementation Guidance**: Followed walkthrough by Luke Yeo (MIT License)  
 
-\subsection*{What I Learned}
-As a fresh graduate, this project helped me develop:
-\begin{itemize}
-    \item \textbf{ETL Pipeline Design}: From extraction (bulk inserts) to transformation (data quality rules)
-    \item \textbf{SQL Optimization}: Stored procedures with error handling and timing metrics
-    \item \textbf{Data Modeling}: Translating business requirements into dimensional models
-    \item \textbf{Documentation}: Clear schema designs and naming conventions
-\end{itemize}
+---
 
-\section*{Project Structure}
-\begin{verbatim}
+## Technical Highlights
+### Data Architecture
+| Layer       | Purpose                          | Example Tables/Views          |
+|-------------|----------------------------------|-------------------------------|
+| **Bronze**  | Raw CSV ingestion               | `erp_loc_a101`, `crm_prd_info`|
+| **Silver**  | Data cleansing & standardization| `silver.crm_cust_info`        |
+| **Gold**    | Star schema for analytics       | `dim_product`, `fact_sales`   |
+
+### What I Learned
+As a fresh graduate, this project helped me develop:  
+- **ETL Pipeline Design**: From extraction (bulk inserts) to transformation (data quality rules)  
+- **SQL Optimization**: Stored procedures with error handling (`TRY/CATCH`)  
+- **Data Modeling**: Translating business needs into dimensional models  
+- **Documentation**: Clear schema designs and naming conventions (e.g., `snake_case`)  
+
+---
+
+## Project Structure
 DataWarehouse/
-├── Bronze/           # Raw data tables (crm_cust_info, erp_loc_a101, etc.)
-├── Silver/           # Cleaned tables with metadata columns
-├── Gold/             # Star schema views for analytics
-├── Scripts/          # SQL scripts for ETL processes
-└── Documentation/    # Architecture diagrams
-\end{verbatim}
+├── Bronze/ # Raw source tables (e.g., crm_sales_detail)
+├── Silver/ # Cleaned tables with technical columns
+├── Gold/ # Star schema views for reporting
+├── Scripts/ # ETL SQL scripts
+---
 
-\section*{How to Reproduce}
-\begin{enumerate}
-    \item Download datasets from \href{https://datawithbaraa.substack.com}{Data With Baraa}
-    \item Execute SQL scripts in order: Bronze → Silver → Gold
-    \item Connect Power BI to Gold layer views for analytics
-\end{enumerate}
+## How to Reproduce
+1. Download datasets from [Data With Baraa](https://datawithbaraa.substack.com)  
+2. Execute SQL scripts in order:  
+   - Bronze → Silver → Gold  
+3. Connect Power BI to Gold layer views for analytics  
 
-\section*{Job Hunting Value}
-This project showcases my ability to:
-\begin{itemize}
-    \item \textbf{Implement industry-standard architectures} (Medallion)
-    \item \textbf{Solve real data quality issues} (e.g., null handling, value standardization)
-    \item \textbf{Bridge technical and business needs} via dimensional modeling
-    \item \textbf{Document and communicate} complex data workflows
-\end{itemize}
+---
 
-\begin{center}
-    \textit{Note: This is my implementation of the original project concept.}\\
-    \textbf{Connect with me on LinkedIn:} \href{https://linkedin.com/in/yourprofile}{yourprofile}
-\end{center}
+## Why This Matters for Job Hunting
+This project showcases my ability to:  
+✅ **Implement industry architectures** (Medallion, star schema)  
+✅ **Solve real data issues** (e.g., marital → marital typo fix, negative sales validation)  
+✅ **Bridge technical and business needs** via dimensional modeling  
+✅ **Communicate clearly** with documentation and naming conventions  
 
-\end{document}
+---
+
+*Note: This is my implementation of the original project concept.*  
+**Connect with me:** [LinkedIn](https://linkedin.com/in/yourprofile) | [Portfolio](yourportfolio.link)  
