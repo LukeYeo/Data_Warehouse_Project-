@@ -3,12 +3,6 @@
 ## Overview
 This project implements a **modern data warehouse** using SQL Server following the **Medallion Architecture** (Bronze-Silver-Gold layers). It demonstrates end-to-end ETL pipelines, data modeling with star schema, and SQL-based analytics for sales data from ERP & CRM systems.
 
-## Note:
--	Dataset: https://datawithbaraa.substack.com/p/build-a-data-warehouse-from-scratch
--	Notion Project Plan: https://thankful-pangolin-2ca.notion.site/SQL-Data-Warehouse-Project-16ed041640ef80489667cfe2f380b269 (I am not the owner of this)
--	Note: This is to learn and have an experience for building a data warehouse  
-
-
 ### Key Features
 - **3-Layer Architecture**:  
   - **Bronze**: Raw ingestion (source-system tables like `crm_cust_info`)  
