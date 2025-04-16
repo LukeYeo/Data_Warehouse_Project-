@@ -65,4 +65,3 @@ This project showcases my ability to:
 ---
 
 *Note: This is my implementation of the original project concept.*  
-**Connect with me:** [LinkedIn](https://linkedin.com/in/yourprofile) | [Portfolio](yourportfolio.link)  
